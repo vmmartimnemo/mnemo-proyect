@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" 
+<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:db="http://www.mulesoft.org/schema/mule/db" 
 	xmlns:vm="http://www.mulesoft.org/schema/mule/vm" 
 	xmlns:jms="http://www.mulesoft.org/schema/mule/jms" 
 	xmlns:http="http://www.mulesoft.org/schema/mule/http"
@@ -31,7 +31,7 @@ http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/cu
 		<set-payload value="#[&quot;Hello Maven&quot;]" doc:name="Set Payload" />
 	</flow>
 	
-	<flow name="retrievesFlights">
+	<flow name="retrieveFlights">
 		<http:listener config-ref="HTTP_Listener_Configuration" path="/flights" doc:name="HTTP" />
 		<db:select config-ref="Derby_Configuration" doc:name="Database">
 			<db:parameterized-query><![CDATA[SELECT * FROM flights]]></db:parameterized-query>
